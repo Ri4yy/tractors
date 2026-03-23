@@ -1,7 +1,15 @@
+:root {
+    --main-color: #009FD9;
+    --accent-color: #E6F8FF;
+    --secondary-color: #404040;
+    --main-text: #3A3737;
+    --accent-color-2: #ff4616;
+}
+
 // color
-$main-color: #548235;
-$accent-color: #D4E1BD;
-$secondary-color: #11332A; 
+$main-color: #009FD9;
+$accent-color: #E6F8FF;
+$secondary-color: #404040; 
 $main-text: #3A3737;
 
 // breakpoint 
@@ -13,7 +21,7 @@ $breakpoint480: 480 + px;
 $breakpoint375: 375 + px;
 
 // font-family
-$font-family: '';
+$font-family: 'Montserrat', sans-serif;
 
 // border-radius
 $main-radius: 35px;

@@ -4,6 +4,7 @@
 @import "./base/base";
 // Blocks
 @import "./blocks/header";
+@import "./blocks/footer";
 @import "./blocks/modal";
 @import "./blocks/menu";
 @import "./blocks/menu-nav";
@@ -15,3 +16,13 @@
 @import "./blocks/accordion";
 @import "./blocks/tabs";
 
+// Main page blocks
+@import "./blocks/catalog";
+@import "./blocks/catalog-card";
+@import "./blocks/features";
+@import "./blocks/about";
+@import "./blocks/clients";
+@import "./blocks/partners";
+@import "./blocks/guarantees";
+@import "./blocks/contacts";
+@import "./blocks/video-content";

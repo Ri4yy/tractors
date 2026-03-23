@@ -1,0 +1,52 @@
+.features {
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+
+        @media (max-width: $breakpoint1024) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: $breakpoint480) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.features-card {
+    background-color: var(--accent-color, #E6F8FF);
+    border-radius: 6px;
+    padding: 16px 22px;
+    min-height: 210px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+    }
+
+    &__icon {
+        position: absolute;
+        bottom: 16px;
+        right: 22px;
+        max-width: 118px;
+        max-height: 118px;
+        object-fit: contain;
+
+        @media (max-width: $breakpoint768) {
+            width: 48px;
+            height: 48px;
+            bottom: 20px;
+            right: 20px;
+        }
+    }
+}

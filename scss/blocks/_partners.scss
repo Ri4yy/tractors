@@ -1,0 +1,22 @@
+.partners {
+
+    &__title {
+        text-align: center;
+
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+    }
+    
+    &__wrapper {
+        margin-top: 40px;
+    }
+}
+
+.partners-swiper {
+    &__slide {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

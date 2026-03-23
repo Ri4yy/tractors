@@ -1,11 +1,49 @@
-.tabs__content {
-    display: none;
+.tabs {
 
-    &.active {
-        display: block; 
+    &__content {
+        display: none;
+    
+        &.active {
+            display: block; 
+        }
+    }
+    &__wrapper {
+        margin-top: 64px;
+    }
+    &__list {
+
+        & li {
+            cursor: pointer;
+        }
     }
 }
 
-.active-tab {
-    color: $main-color;
+.tabs-type-1 {
+
+    & .tabs__list {
+        display: flex;
+        gap: 44px;
+
+        & li {
+            position: relative;
+            
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: rgba(64, 64, 64, 0.6);
+
+            &.active-tab {
+                color: var(--secondary-color);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    bottom: -16px;
+                    left: 0;
+                    background: var(--secondary-color);
+                }
+            }
+        } 
+    }
 }
