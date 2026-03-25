@@ -1,0 +1,35 @@
+.map-content {
+    display: flex;
+    justify-content: center;
+    margin: -142px auto 0;
+}
+.map__svg {
+    overflow: visible;
+}
+.map__point {
+    pointer-events: none;
+
+    & text {
+        fill: #fff;
+        stroke: #fff;
+        stroke-width: 0.01;
+        -webkit-transform: translateX(10px);
+        transform: translateX(10px);
+        font-weight: 600;
+        font-size: 12px;
+        text-align: justify;
+        color: #fff;
+
+        &.text-dark {
+            fill: #000;
+            stroke: #000;
+        }
+    }
+}
+.map__point-icon {
+    fill: var(--accent-color-2) !important;
+}
+
+.map-tab-link.active > path {
+    fill: #979797;
+}

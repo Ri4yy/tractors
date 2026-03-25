@@ -86,6 +86,23 @@ document.querySelectorAll('.video-swiper').forEach((swiperEl) => {
     });
 });
 
+const shortsSwiper = new Swiper('.shorts-swiper', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.shorts-swiper-btn--next',
+      prevEl: '.shorts-swiper-btn--prev',
+    },
+});
+const reviewsSwiper = new Swiper('.reviews-swiper', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.reviews-swiper-btn--next',
+      prevEl: '.reviews-swiper-btn--prev',
+    },
+});
+
 const clientsSwiper = new Swiper('.partners-swiper', {
     slidesPerView: 6.5,
     spaceBetween: 56,

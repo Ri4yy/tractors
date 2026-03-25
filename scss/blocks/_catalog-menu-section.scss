@@ -1,0 +1,41 @@
+.catalog-menu-section { 
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &__item {
+
+        &:hover {
+            & .catalog-menu-section__head {
+                &-name {
+                    color: var(--main-color);
+                }
+            } 
+
+            & > .catalog-menu__subsection {
+                opacity: 1;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -28px;
+                    background: transparent;
+                    width: 40px;
+                    height: 100%;
+                    z-index: 3;
+                }
+            }
+        }
+    }
+    &__head {
+        display: flex;
+
+        &-name {
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: color .3s;
+        }
+    }
+}

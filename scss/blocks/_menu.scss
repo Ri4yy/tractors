@@ -1,5 +1,5 @@
 .menu {
-    display: inline-flex;
+    width: 100%;
     
     @media(max-width: $breakpoint768) {
         display: none;
@@ -35,18 +35,7 @@
         }
 
         & .menu-nav {
-
-            @media(max-width: $breakpoint768) {
-                flex-direction: column;
-                align-items: center;
-                gap: 28px;
-
-                width: 100%;
-            }
-
-            &__link {
-                font-size: 18px;
-            }
+            
         }
     }
 

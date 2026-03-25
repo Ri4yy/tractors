@@ -1,0 +1,47 @@
+.consult-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+
+    &__top {
+        display: flex;
+        justify-content: center;
+
+        & h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__btn {
+        border: 1px solid var(--main-color);
+        border-radius: 4px;
+        padding: 12px 70px;
+        background: var(--main-color);
+        width: fit-content;
+        margin: 0 auto;
+
+        font-weight: 700;
+        font-size: 1rem;
+        text-align: center;
+        color: #fff;
+    }
+}

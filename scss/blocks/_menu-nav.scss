@@ -1,7 +1,8 @@
 .menu-nav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
+
 
     @media(max-width: $breakpoint1280) {
         gap: 16px;
@@ -15,17 +16,14 @@
     }
 
     &__link {
-        display: block;
-        font-weight: 500;
-        font-size: 18px;
-        color: $main-text;
-
-        @media(max-width: $breakpoint1024) {
-            font-size: 16px;
-        }
+        padding: 16px;
+        
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: #252726;
 
         &--active {
-            color: $main-color;
+            color: var(--main-color);
         }
     }
 }
