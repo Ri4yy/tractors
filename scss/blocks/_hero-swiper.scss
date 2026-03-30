@@ -1,0 +1,63 @@
+.hero-swiper {
+    position: relative;
+    
+    &__bottom {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 32px;
+        z-index: 2;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        &-group {
+            display: flex;
+        }
+    }
+
+    &-btn {
+        width: 40px;
+        height: 40px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 2;
+        cursor: pointer;
+
+        &.swiper-button-disabled {
+            & svg {
+                fill: #fff !important;
+            }
+        }
+        & svg {
+            fill: var(--accent-color-2);
+        }
+
+    }
+    &-pagination {
+        position: relative;
+        bottom: unset !important;
+        top: unset !important;
+        
+        display: flex;
+        gap: 18px;
+
+        & .swiper-pagination-bullet {
+            margin: 0 !important;
+            opacity: 1 !important;
+            border-radius: 0 !important;
+
+            height: 4px;
+            width: 42px;
+            background: #fff;
+
+            &-active {
+                background: var(--accent-color-2);
+            }
+        }
+    }
+}

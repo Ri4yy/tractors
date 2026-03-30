@@ -24,6 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     resize()
 
+    const catalogTrigger = document.querySelector('.header__catalog-trigger');
+    const catalogMenu = document.querySelector('.catalog-menu');
+    if (catalogTrigger && catalogMenu) {
+        function setCatalogScrollLock(locked) {
+            document.documentElement.classList.toggle('no-scroll', locked);
+            document.body.classList.toggle('no-scroll', locked);
+        }
+
+        catalogTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            catalogMenu.classList.toggle('open');
+            setCatalogScrollLock(catalogMenu.classList.contains('open'));
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!catalogMenu.classList.contains('open')) return;
+            const t = e.target;
+            if (catalogMenu.contains(t) || catalogTrigger.contains(t)) return;
+            catalogMenu.classList.remove('open');
+            setCatalogScrollLock(false);
+        });
+    }
+
     // Catalog Gallery Logic
     const catalogCards = document.querySelectorAll('.catalog-card');
 

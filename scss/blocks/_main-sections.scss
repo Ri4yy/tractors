@@ -15,15 +15,27 @@
         display: block;
 
         &-text {
+            position: relative;
+            
             font-weight: 500;
             font-size: 1.5rem;
             color: #8a8a8a;
 
             &:hover {
-                color: var(--main-color);
+                color: var(--secondary-color);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    bottom: -6px;
+                    left: 0;
+                    background: var(--secondary-color);
+                }
             }
         }
-    }
+    } 
 
     &__content {
         display: grid;

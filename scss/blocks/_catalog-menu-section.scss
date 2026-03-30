@@ -14,16 +14,16 @@
 
             & > .catalog-menu__subsection {
                 opacity: 1;
+                pointer-events: auto;
 
                 &::before {
                     content: '';
                     position: absolute;
                     top: 0;
-                    left: -28px;
-                    background: transparent;
-                    width: 40px;
+                    left: -40px;
+                    width: 52px;
                     height: 100%;
-                    z-index: 3;
+                    z-index: 4;
                 }
             }
         }

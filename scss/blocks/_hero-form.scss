@@ -1,0 +1,41 @@
+.hero-form {
+    padding: 26px 22px;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    &__btn {
+        order: 1px solid var(--main-color);
+        border-radius: 4px;
+        padding: 12px 24px;
+        background: var(--main-color);
+
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+        white-space: nowrap;
+    }
+}

@@ -107,6 +107,7 @@ const clientsSwiper = new Swiper('.partners-swiper', {
     slidesPerView: 6.5,
     spaceBetween: 56,
     centeredSlides: true,
+    allowTouchMove: false,
     speed: 3000,
     autoplay: {
         delay: 0,
@@ -119,4 +120,19 @@ const clientsSwiper = new Swiper('.partners-swiper', {
             spaceBetween: 50,
         }
     }
+});
+
+const heroSwiper = new Swiper('.hero-swiper', {
+    slidesPerView: 1,
+    effect: 'fade',
+    speed: 1000,
+
+
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.hero-swiper-btn--next',
+      prevEl: '.hero-swiper-btn--prev',
+    },
 });
