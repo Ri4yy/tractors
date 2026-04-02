@@ -12,6 +12,7 @@
 @import "./blocks/menu";
 @import "./blocks/menu-nav";
 @import "./blocks/ui";
+@import "./blocks/template-swiper-ui";
 @import "./blocks/breadcrumb";
 // Custom
 @import "./blocks/custom-checkbox";
@@ -44,3 +45,17 @@
 @import "./blocks/hero";
 @import "./blocks/hero-form";
 @import "./blocks/hero-swiper";
+
+// Catalog detail page blocks
+@import "./blocks/catalog-detail";
+@import "./blocks/catalog-detail-props"; 
+@import "./blocks/applications";
+
+// Catalog section page blocks
+@import "./blocks/catalog-main";
+@import "./blocks/filter";
+@import "./blocks/filter-panel";
+@import "./blocks/pagination";
+
+// Catalog section repair page blocks
+@import "./blocks/repair-card";

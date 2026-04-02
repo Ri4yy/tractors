@@ -4,12 +4,30 @@
         display: flex;
         flex-direction: column;
         gap: 48px;
+
+        @media(max-width: $breakpoint1024) {
+            gap: 20px;
+        }
     }
 
     &__list {
         display: flex;
         justify-content: space-between;
-        gap: 10px;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        row-gap: 20px;
+
+        @media(max-width: $breakpoint1280) {
+            column-gap: 44px;
+            justify-content: flex-start;
+        }
+        @media(max-width: $breakpoint1024) {
+            row-gap: 16px;
+        }
+        @media(max-width: $breakpoint480) {
+            column-gap: 20px;
+            row-gap: 10px;
+        }
     }
     &__link {
         display: block;
@@ -20,6 +38,13 @@
             font-weight: 500;
             font-size: 1.5rem;
             color: #8a8a8a;
+
+            @media(max-width: $breakpoint1024) {
+                font-size: 1.25rem;
+            }
+            @media(max-width: $breakpoint480) {
+                font-size: 1rem;
+            }
 
             &:hover {
                 color: var(--secondary-color);
@@ -42,15 +67,37 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 20px;
         transition: grid-template-columns 0.35s ease;
+
+        @media(max-width: $breakpoint1024) {
+            gap: 16px;
+        }
+        @media(max-width: $breakpoint768) {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        @media(max-width: $breakpoint480) {
+            grid-template-columns: 1fr !important;
+        }
     
         &:has(.section-card:nth-child(1):hover) {
             grid-template-columns: 1.35fr 1fr 1fr;
+
+            @media(max-width: $breakpoint1024) {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         &:has(.section-card:nth-child(2):hover) {
             grid-template-columns: 1fr 1.35fr 1fr;
+
+            @media(max-width: $breakpoint1024) {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         &:has(.section-card:nth-child(3):hover) {
             grid-template-columns: 1fr 1fr 1.35fr;
+
+            @media(max-width: $breakpoint1024) {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     }
 }
@@ -71,10 +118,22 @@
 
     transition: background 0.35s ease;
 
+    @media(max-width: $breakpoint1024) {
+        padding: 24px 12px 14px;
+    }
+    @media(max-width: $breakpoint768) {
+        gap: 6px;
+    }
+
     &__image {
         max-height: 180px;
 
+        @media(max-width: $breakpoint1024) {
+            max-height: 150px;
+        }
+
         & img {
+            height: 100%;
             object-fit: contain;
         }
     }
@@ -85,6 +144,18 @@
         color: var(--secondary-color);
 
         transition: color 0.35s ease;
+
+        @media(max-width: $breakpoint1024) {
+            font-size: 1.25rem;
+        }
+    }
+
+    &.active {
+        background: var(--accent-color);
+
+        & .section-card__text {
+            color: var(--main-color);
+        }
     }
 
     &:hover {

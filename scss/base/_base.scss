@@ -4,7 +4,7 @@ html,
 body {
     font-family: $font-family;
     scroll-behavior: smooth;
-}
+} 
  
 // Заголовки
 h1 {
@@ -12,18 +12,24 @@ h1 {
     font-size: 3.25rem;
     text-transform: uppercase;
     color: var(--main-color);
+
+    & span {
+        font-size: 40px;
+        color: var(--secondary-color);
+    }
 }
 h2, .h2 {
     font-weight: 600;
     font-size: 40px;
-    color: #000;
+    // color: #000;
+    color: var(--secondary-color);
 
     @media(max-width: $breakpoint768) {
-        font-size: 32px;
-        line-height: 130%;
+        font-size: 36px;
     }
     @media(max-width: $breakpoint480) {
         font-size: 24px;
+        text-align: center;
     }
 }
 
@@ -61,9 +67,9 @@ h2, .h2 {
 .section {
     padding: 40px 0;
 
-    @media(max-width: $breakpoint768) {
-        padding: 30px 0;
-    }
+    // @media(max-width: $breakpoint768) {
+    //     padding: 30px 0;
+    // }
 }
 .section-breadcrumb {
     padding-top: 40px;

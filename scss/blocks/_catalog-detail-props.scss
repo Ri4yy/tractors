@@ -1,0 +1,119 @@
+.catalog-detail-props {
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+        row-gap: 16px;
+    }
+    &__item {
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+        background: #f1f1f1;
+        border-radius: 4px;
+        height: fit-content;
+
+        &-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            overflow: hidden;
+            transition: grid-template-rows 0.3s ease-in-out;
+        }
+
+        &-trigger {
+            padding: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            cursor: pointer;
+        }
+        &-name {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+        &-icon {
+            display: flex;
+            flex-shrink: 0;
+            pointer-events: none;
+            position: relative;
+        
+            width: 20px;
+            height: 20px;
+        
+            & span {
+                position: absolute;
+        
+                background: var(--secondary-color);
+
+                display: flex;
+                align-items: center;
+        
+                transition: all .3s;
+        
+                &:first-child {
+                    width: 18px;
+                    height: 3px;
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                }
+                &:last-child {
+                    width: 3px;
+                    height: 18px;
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                }
+            }
+        }
+
+        &.open {
+            & .catalog-detail-props__item-content {
+                grid-template-rows: 1fr;
+            }
+            & .catalog-detail-props__item-name {
+                color: var(--main-color);
+            }        
+            & .catalog-detail-props__item-icon span {
+                &:last-child {
+                    opacity: 0;
+                }
+            }    
+        }
+    }
+}
+
+.catalog-props-list {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+
+    &__item {
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        &:nth-of-type(odd) {
+            background: #fafafa;
+        }
+
+        &-name {
+            width: 50%;
+
+            font-weight: 600;
+            font-size: 20px;
+            color: #000;
+        }
+        &-value {
+            width: 50%;
+
+            font-weight: 500;
+            font-size: 20px;
+            color: #000;
+        }
+    }
+}
