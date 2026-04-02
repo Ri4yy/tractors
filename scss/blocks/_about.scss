@@ -12,14 +12,18 @@
         grid-template-columns: 1.2fr 1.4fr;
         gap: 48px;
 
-        margin-bottom: 48px;
-
         @media (max-width: $breakpoint992) {
-            margin-bottom: 20px;
             grid-template-columns: 1fr;
             gap: 16px;
         } 
  
+        &-left-title {
+            margin-bottom: 48px;
+            
+            @media (max-width: $breakpoint992) {
+                margin-bottom: 20px;
+            } 
+        }
         &-text {
 
             p {
