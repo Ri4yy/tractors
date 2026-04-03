@@ -165,9 +165,23 @@ document.querySelectorAll('.video-swiper').forEach((swiperEl) => {
     if (!root) return;
 
     new Swiper(swiperEl, {
-        slidesPerView: 3,
-        spaceBetween: 20,
         enabled: true,
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 12,
+            },
+            600: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+        },
+
         navigation: {
             nextEl: root.querySelector('.video-swiper-btn--next'),
             prevEl: root.querySelector('.video-swiper-btn--prev'),
@@ -176,8 +190,26 @@ document.querySelectorAll('.video-swiper').forEach((swiperEl) => {
 });
 
 const shortsSwiper = new Swiper('.shorts-swiper', {
-    slidesPerView: 4,
-    spaceBetween: 20,
+
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 12,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        992: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1280: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+    },
+
     navigation: {
       nextEl: '.shorts-swiper-btn--next',
       prevEl: '.shorts-swiper-btn--prev',
@@ -186,6 +218,22 @@ const shortsSwiper = new Swiper('.shorts-swiper', {
 const reviewsSwiper = new Swiper('.reviews-swiper', {
     slidesPerView: 3,
     spaceBetween: 20,
+
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 12,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+    },
+    
     navigation: {
       nextEl: '.reviews-swiper-btn--next',
       prevEl: '.reviews-swiper-btn--prev',
@@ -262,7 +310,6 @@ const heroSwiper = new Swiper('.hero-swiper', {
     slidesPerView: 1,
     effect: 'fade',
     speed: 1000,
-
 
     pagination: {
       el: '.swiper-pagination',

@@ -6,20 +6,33 @@
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
     background: #fff;
 
-    &__wrapper {
-        display: grid;
-        grid-template-columns: 2fr 1.3fr;
-        gap: 64px;
+    @media(max-width: $breakpoint768) {
+        margin-top: 20px;
+    }
+    @media(max-width: $breakpoint480) {
+        margin-top: 16px;
     }
 
-    &__item {
+    @media(max-width: $breakpoint768) {
+        padding: 20px;
+    }
 
-        & h3 {
-            font-weight: 600;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            color: var(--secondary-color);
+    &__wrapper {
+        display: flex;
+        gap: 64px;
+
+        @media(max-width: $breakpoint1280) {
+            gap: 40px;
         }
+        @media(max-width: $breakpoint768) {
+            flex-direction: column;
+            gap: 32px;
+        }
+    }
+
+    &__left {
+        max-width: 800px;
+        width: 100%;
 
         &-list {
 
@@ -34,6 +47,10 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                
+                @media(max-width: $breakpoint768) {
+                    font-size: 1rem;
+                }
 
                 &::before {
                     content: '';
@@ -45,7 +62,27 @@
                     height: 6px;
                     background: var(--secondary-color);
                     border-radius: 50%;
+                    flex-shrink: 0;
                 }
+            }
+        }
+    }
+
+    &__right {
+        width: 520px;
+        flex-shrink: 0;
+
+        @media(max-width: $breakpoint1280) {
+            width: 270px;
+        }
+
+        & h3 {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+
+            @media(max-width: $breakpoint768) {
+                font-size: 1.25rem;
             }
         }
 
@@ -54,6 +91,14 @@
 
             display: flex;
             gap: 48px;
+
+            @media(max-width: $breakpoint1280) {
+                flex-direction: column;
+                gap: 24px;
+            }
+            @media(max-width: $breakpoint768) {
+                gap: 16px;
+            }
 
             &-item {
                 display: flex;
@@ -65,6 +110,17 @@
                     font-size: 1.25rem;
                     line-height: 120%;
                     color: #323232;
+
+                    @media(max-width: $breakpoint768) {
+                        font-size: 1rem;
+                    }
+                }
+
+                &-img {
+                    @media(max-width: $breakpoint768) {
+                        width: 60px;
+                        height: 60px;
+                    }
                 }
             }
         }

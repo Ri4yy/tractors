@@ -2,6 +2,21 @@
     display: flex;
     justify-content: center;
     margin: -142px auto 0;
+
+    @media(max-width: $breakpoint992) {
+        margin-top: -90px;
+    }
+
+    &__wrapper {
+        @media(max-width: $breakpoint992) {
+            overflow-x: scroll;
+        }
+    }
+    &__inner {
+        @media(max-width: $breakpoint992) {
+            width: 800px;
+        }
+    }
 }
 .map__svg {
     overflow: visible;

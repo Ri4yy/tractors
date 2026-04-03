@@ -6,12 +6,21 @@
     transition: opacity .3s;
     position: absolute;
 
+    @media(max-width: $container-width) {
+        right: 0;
+        left: 0;
+        width: 100%;
+    }
+    @media(max-width: $breakpoint1024) {
+        display: none;
+    }
+
     &.open {
         opacity: 1;
         pointer-events: auto;
         z-index: 100;
 
-        &__wrapper {
+        & .catalog-menu__wrapper {
             transform: translateY(0);
         }
         & .catalog-menu__subsection--main {
@@ -24,8 +33,6 @@
         z-index: 1;
         transform: translateY(10px);
         transition: transform .3s;
-        // min-height: 400px;
-        // overflow: hidden;
         
         border-radius: 6px;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -34,6 +41,10 @@
         transition: width .3s ease-in-out, transform .3s;
 
         width: $container-width;
+
+        @media(max-width: $container-width) {
+            width: 100%;
+        }
 
         &::after {
             content: '';
@@ -69,6 +80,10 @@
         padding: 56px 28px;
         border-radius: 6px 0 0 6px;
         background: #fff;
+
+        @media(max-width: $breakpoint1280) {
+            padding: 40px 28px 40px 16px;
+        }
     }
     &__subsection {
         position: absolute;
@@ -98,6 +113,10 @@
 
             padding: 56px 12px;
             z-index: 2;
+
+            @media(max-width: $breakpoint1280) {
+                padding: 40px 12px;
+            }
         }
         &-list {
             height: 345px;
@@ -129,6 +148,7 @@
     }
 }
 
+// overlay
 .header:has(.catalog-menu.open)::before {
     content: '';
     position: absolute;
@@ -140,4 +160,8 @@
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(3px);
     pointer-events: auto;
+
+    @media(max-width: $breakpoint1024) {
+        display: none;
+    }
 }

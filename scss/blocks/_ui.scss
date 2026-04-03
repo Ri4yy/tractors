@@ -20,7 +20,11 @@
 
     &.open &-trigger svg {
         transform: rotate(180deg);
-        
+    }
+    &.open {
+        & .select-wrapper-trigger {
+            z-index: 2;
+        }
     }
 
     &-trigger svg {
@@ -30,7 +34,6 @@
 
     &-trigger {
         position: relative;
-        z-index: 2;
 
         border: 1px solid #979797;
         border-radius: 4px;
@@ -46,6 +49,11 @@
         font-weight: 400;
         font-size: 1rem;
         color: var(--secondary-color);
+
+        width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     &-options {
         opacity: 0;
@@ -78,9 +86,16 @@
         padding: 8px 12px;
         cursor: pointer;
 
-        font-weight: 600;
-        font-size: 1.25rem;
-        color: var(--secondary-color);
+
+        & span {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+
+            @media(max-width: $breakpoint992) {
+                font-size: 1rem;
+            }
+        }
 
         &:hover {
             background: var(--accent-color);

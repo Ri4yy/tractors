@@ -22,6 +22,10 @@
         font-size: 1.25rem;
         color: #252726;
 
+        @media(max-width: $breakpoint1280) {
+            font-size: 1rem;
+        }
+
         &--active {
             color: var(--main-color);
         }

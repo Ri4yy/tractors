@@ -1,28 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let menu = document.querySelector('.menu'),
+    let menu = document.querySelector('.mobile-menu'),
     btnMenu = document.querySelector('.btn-menu');
 
-    // btnMenu.addEventListener('click', (e) => {
-    //     menu.classList.toggle('menu--open')
+    btnMenu.addEventListener('click', (e) => {
+        menu.classList.toggle('open')
 
-    //     btnMenu.classList.toggle('btn-menu--open')
-    // })
-
-    // function resize() {
-    //     let width = window.innerWidth;
-
-    //     if (width > 768) {
-    //         menu.classList.remove('menu--open')
-    //         btnMenu.classList.remove('btn-menu--open')
-    //     } else {
-    //         return
-    //     }
-    // }
-
-    // window.addEventListener('resize', () => {
-    //     resize()
-    // })
-    // resize()
+        btnMenu.classList.toggle('open')
+    })
 
     const catalogTrigger = document.querySelector('.header__catalog-trigger');
     const catalogMenu = document.querySelector('.catalog-menu');
@@ -141,6 +125,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trigger.addEventListener('click', () => {
             item.classList.toggle('open');
+        });
+    });
+
+    document.querySelectorAll('.mobile-menu-section-list__trigger').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.mobile-menu-section-list__item');
+            const list = btn.closest('.mobile-menu-section-list');
+            if (!item || !list) return;
+
+            const wasOpen = item.classList.contains('open');
+
+            list.querySelectorAll('.mobile-menu-section-list__item').forEach((el) => {
+                el.classList.remove('open');
+            });
+
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        });
+    });
+
+    document.querySelectorAll('.header-contacts__mobile-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const root = trigger.closest('.header-contacts');
+            if (!root) return;
+            root.classList.toggle('open');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.header-contacts')) return;
+        document.querySelectorAll('.header-contacts.open').forEach((block) => {
+            block.classList.remove('open');
         });
     });
 

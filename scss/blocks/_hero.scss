@@ -1,12 +1,17 @@
 .hero {
+    position: relative;
 
     &__inner {
         height: 710px;
 
-        background: url("/assets/img/bg/hero-bg.png");
+        background: var(--main-bg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+
+        @media(max-width: $breakpoint480) {
+            height: 360px;
+        }
 
         & .container {
             height: 100%;
@@ -17,7 +22,16 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        // justify-content: center;
+
+        padding-top: 100px;
+
+        @media(max-width: $breakpoint768) {
+            padding-top: 64px;
+        }
+        @media(max-width: $breakpoint480) {
+            padding-top: 28px;
+        }
 
         &-wrapper {
             margin-top: 16px;
@@ -30,10 +44,47 @@
         font-size: 3.25rem;
         text-transform: uppercase;
         color: var(--main-color);
+
+        @media(max-width: $breakpoint992) {
+            font-size: 3rem;
+        }
+        @media(max-width: $breakpoint600) {
+            font-size: 2.5rem;
+        }
+        @media(max-width: $breakpoint480) {
+            text-align: start;
+            font-size: 1.75rem;
+        }
     }
 
     &__form {
-        margin-top: 48px;
+        // margin-top: 48px;
+        max-width: 650px;
+        width: 100%;
+
+        position: absolute;
+        left: calc((100% - $container-width) / 2);
+        bottom: 130px;
+        z-index: 2;
+
+        @media(max-width: $container-width) {
+            left: 24px;
+        }
+        @media(max-width: $breakpoint992) {
+            bottom: 100px;
+        }
+        @media(max-width: $breakpoint768) {
+            position: relative;
+            bottom: unset;
+            left: unset;
+
+            padding: 20px 32px 0;
+            max-width: 100%;
+        }
+        @media(max-width: $breakpoint600) {
+            padding: 14px 16px 0;
+        }
+        
     }
 }
 
@@ -41,6 +92,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+
+    @media(max-width: $breakpoint480) {
+        gap: 14px;
+    }
 
     &__link {
         display: block;
@@ -51,10 +106,18 @@
         box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.25);
         background: rgba(64, 64, 64, 0.29);
 
+        @media(max-width: $breakpoint480) {
+            padding: 6px;
+        }
+
         &-text {
             font-weight: 600;
             font-size: 1rem;
             color: #fff;
+
+            @media(max-width: $breakpoint480) {
+                font-size: 0.75rem;
+            }
         }
     }
 }

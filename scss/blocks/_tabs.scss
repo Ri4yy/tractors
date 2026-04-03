@@ -38,12 +38,28 @@
         display: flex;
         gap: 44px;
 
+        @media(max-width: $breakpoint480) {
+            width: fit-content;
+            margin: 0 auto;
+            gap: 32px;
+        }
+        @media(max-width: 400px) {
+            gap: 14px;
+        }
+
         & li {
             position: relative;
             
             font-weight: 500;
             font-size: 1.5rem;
             color: rgba(64, 64, 64, 0.6);
+
+            @media(max-width: $breakpoint480) {
+                font-size: 1.25rem;
+            }
+            @media(max-width: 400px) {
+                font-size: 1rem;
+            }
 
             &.active-tab {
                 color: var(--secondary-color);
@@ -56,6 +72,10 @@
                     bottom: -16px;
                     left: 0;
                     background: var(--secondary-color);
+
+                    @media(max-width: $breakpoint480) {
+                        bottom: -10px;
+                    }
                 }
             }
         } 
@@ -63,6 +83,13 @@
 
     & .tabs__wrapper {
         margin-top: 64px;
+
+        @media(max-width: $breakpoint768) {
+            margin-top: 56px;
+        }
+        @media(max-width: $breakpoint480) {
+            margin-top: 40px;
+        }
     }
 }
 
@@ -71,6 +98,14 @@
     & .tabs__list {
         display: flex;
         gap: 22px;
+
+        @media(max-width: $breakpoint992) {
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media(max-width: $breakpoint480) {
+            gap: 16px;
+        }
 
         & li {
             font-weight: 700;
@@ -83,6 +118,14 @@
             border-radius: 4px;
             padding: 20px;
             flex-grow: 1;
+
+            @media(max-width: $breakpoint1280) {
+                padding: 16px;
+                font-size: 1.25rem;
+            }
+            @media(max-width: $breakpoint375) {
+                font-size: 1rem;
+            }
 
             &.active-tab {
                 color: #fff;

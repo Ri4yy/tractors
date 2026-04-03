@@ -12,6 +12,14 @@
         align-items: center;
         gap: 12px;
 
+        @media(max-width: $breakpoint768) {
+            bottom: 20px;
+        }
+        @media(max-width: $breakpoint480) {
+            gap: 8px;
+            bottom: 0;
+        }
+
         &-group {
             display: flex;
         }
@@ -35,6 +43,10 @@
         }
         & svg {
             fill: var(--accent-color-2);
+
+            @media(max-width: $breakpoint480) {
+                width: 12px;
+            }
         }
 
     }
@@ -54,6 +66,10 @@
             height: 4px;
             width: 42px;
             background: #fff;
+
+            @media(max-width: $breakpoint480) {
+                width: 26px;
+            }
 
             &-active {
                 background: var(--accent-color-2);

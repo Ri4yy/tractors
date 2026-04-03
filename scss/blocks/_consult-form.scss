@@ -7,6 +7,10 @@
     width: 100%;
     margin: 0 auto;
 
+    @media(max-width: $breakpoint480) {
+        gap: 16px;
+    }
+
     &__top {
         display: flex;
         justify-content: center;
@@ -17,6 +21,10 @@
             text-transform: uppercase;
             text-align: center;
             color: var(--secondary-color);
+
+            @media(max-width: $breakpoint480) {
+                font-size: 1.25rem;
+            }
         }
     }
 
@@ -24,6 +32,16 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+
+        @media(max-width: $breakpoint768) {
+            margin: 0 auto;
+            max-width: 530px;
+            width: 100%;
+            grid-template-columns: 1fr;
+        }
+        @media(max-width: $breakpoint480) {
+            gap: 12px;
+        }
     }
 
     &__item {
@@ -43,5 +61,10 @@
         font-size: 1rem;
         text-align: center;
         color: #fff;
+
+        @media(max-width: $breakpoint480) {
+            padding: 12px;
+            font-size: 0.875rem;
+        }
     }
 }

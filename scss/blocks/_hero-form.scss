@@ -8,23 +8,46 @@
     flex-direction: column;
     gap: 24px;
 
+    @media(max-width: $breakpoint600) {
+        padding: 20px 12px;
+    }
+
     &__title {
         font-weight: 700;
         font-size: 1.5rem;
         text-transform: uppercase;
         color: var(--secondary-color);
+
+        @media(max-width: $breakpoint768) {
+            text-align: center;
+        }
+        @media(max-width: $breakpoint480) {
+            font-size: 1.25rem;
+        }
+        @media(max-width: $breakpoint375) {
+            font-size: 1rem;
+        }
     }
 
     &__wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+
+        @media(max-width: $breakpoint600) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__bottom {
         display: flex;
         align-items: center;
         gap: 14px;
+
+        @media(max-width: $breakpoint600) {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+        }
     }
 
     &__btn {
@@ -37,5 +60,9 @@
         font-size: 1rem;
         color: #fff;
         white-space: nowrap;
+
+        @media(max-width: $breakpoint480) {
+            width: 100%;
+        }
     }
 }

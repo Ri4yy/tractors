@@ -3,6 +3,13 @@
     flex-direction: column;
     gap: 48px;
 
+    @media(max-width: $breakpoint768) {
+        gap: 20px;
+    }
+    @media(max-width: $breakpoint480) {
+        gap: 36px;
+    }
+
     &__top {
         max-width: 740px;
     }
@@ -11,6 +18,13 @@
         border-radius: 6px;
         padding: 48px 76px;
         background: #f1f1f1;
+
+        @media(max-width: $breakpoint1280) {
+            padding: 42px 36px;
+        }
+        @media(max-width: $breakpoint480) {
+            padding: 24px 8px;
+        }
 
         &-top {
             display: flex;
@@ -23,6 +37,10 @@
                 text-transform: uppercase;
                 text-align: center;
                 color: var(--secondary-color);
+
+                @media(max-width: $breakpoint768) {
+                    font-size: 1.25rem;
+                }
             }
             &-value {
                 font-weight: 700;
@@ -30,6 +48,10 @@
                 text-transform: uppercase;
                 text-align: center;
                 color: var(--main-color);
+
+                @media(max-width: $breakpoint768) {
+                    font-size: 2rem;
+                }
             }
         }
 
@@ -40,19 +62,54 @@
             justify-content: space-between;
             gap: 60px;
 
+            @media(max-width: $breakpoint1280) {
+                gap: 20px;
+            }
+            @media(max-width: $breakpoint1024) {
+                max-width: 400px;
+                width: 100%;
+
+                margin: 44px auto 0;
+                flex-direction: column;
+            }
+            @media(max-width: $breakpoint480) {
+                margin-top: 24px;
+                gap: 16px;
+            }
+
             &-item {
                 display: flex;
                 align-items: center;
                 gap: 12px;
 
                 &::before {
-                    content: url("/assets/img/icons/arrow.png");
+                    content: '';
+
+                    flex-shrink: 0;
+                    width: 48px;
+                    height: 48px;
+                    background-image: url("/assets/img/icons/arrow.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+
+                    @media(max-width: $breakpoint480) {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
 
                 &-text {
                     font-weight: 600;
                     font-size: 1.25rem;
                     color: var(--secondary-color);
+
+                    @media(max-width: $breakpoint768) {
+                        font-size: 1.125rem;
+                    }
+                    @media(max-width: $breakpoint480) {
+                        font-size: 1rem;
+                    }
                 }
             }
         }
@@ -62,11 +119,26 @@
         display: grid;
         grid-template-columns: 2fr 1.5fr;
         gap: 20px;
+
+        @media(max-width: $breakpoint1280) {
+            grid-template-columns: 2fr 1.2fr;
+        }
+        @media(max-width: $breakpoint1024) {
+            grid-template-columns: 1fr;
+        }
+        @media(max-width: $breakpoint480) {
+            gap: 36px;
+        }
+        
     }
     &__grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+
+        @media(max-width: 700px) {
+            grid-template-columns: 1fr;
+        }
 
         &-item {
             position: relative;
@@ -75,6 +147,11 @@
             border-radius: 6px;
             padding: 16px 22px;
 
+            @media(max-width: $breakpoint480) {
+                padding: 12px 16px;
+                height: 150px;
+            }
+
             &-title {
                 margin-bottom: 12px;
 
@@ -82,11 +159,27 @@
                 font-size: 1.5rem ;
                 text-transform: uppercase;
                 color: var(--secondary-color);
+
+                @media(max-width: $breakpoint1280) {
+                    font-size: 1.25rem;
+                }
+                @media(max-width: $breakpoint1024) {
+                    font-size: 1.5rem;
+                }
+                @media(max-width: $breakpoint480) {
+                    font-size: 1.25rem;
+                }
             }
             &-text {
+                position: relative;
                 font-weight: 600;
                 font-size: 1.25rem;
                 color: var(--secondary-color);
+                z-index: 2;
+                
+                @media(max-width: $breakpoint480) {
+                    font-size: 1rem;
+                }
             }
 
             &-number {
@@ -97,8 +190,31 @@
                 font-weight: 700;
                 font-size: 4rem;
                 color: rgba(151, 151, 151, 0.6);
+
+                
+                @media(max-width: $breakpoint768) {
+                    font-size: 3rem;
+                }
             }
 
+            &:first-child {
+                @media(max-width: $breakpoint480) {
+                    height: 100px;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    & .guarantees__grid-item-title {
+                        margin-bottom: 8px;
+                    }
+                    & .guarantees__grid-item-text {
+                        text-align: center;
+                    }
+
+                }
+            }
             &:not(:first-child) {
                 box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
                 background: #f1f1f1;
@@ -131,11 +247,48 @@
             box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
             background-color: var(--accent-color);
 
+            @media(max-width: $breakpoint1280) {
+                background-position: 100% 66%;
+            }
+            @media(max-width: $breakpoint1024) {
+                background-position: 100% 150%;
+                height: 300px;
+            }
+            @media(max-width: 700px) {
+                background-position: 100% 80%;
+                height: 360px;
+            }
+            @media(max-width: $breakpoint480) {
+                background-image: url("/assets/img/bg/guarantee-bg-xs.png");
+                background-position: 50% 60%;
+                align-items: center;
+                padding: 16px;
+            }
+
             &-title {
                 font-weight: 700;
                 font-size: 1.5rem;
                 text-transform: uppercase;
                 color: var(--secondary-color);
+
+                & br {
+                    display: none;
+
+                    @media(max-width: $breakpoint1024) {
+                        display: block;
+                    }
+                }
+
+                @media(max-width: $breakpoint1280) {
+                    font-size: 1.25rem;
+                }
+                @media(max-width: $breakpoint1024) {
+                    font-size: 1.5rem;
+                }
+                @media(max-width: $breakpoint480) {
+                    font-size: 1.25rem;
+                    text-align: center;
+                }
             }
             &-btn {
                 border: 1px solid var(--main-color);
@@ -155,6 +308,11 @@
         display: flex;
         gap: 16px;
 
+        @media(max-width: $breakpoint768) {
+            flex-direction: column;
+            align-items: center;
+        }
+
         &-btn {
             border-radius: 4px;
             padding: 12px 32px;
@@ -162,6 +320,15 @@
         
             font-weight: 700;
             font-size: 1.25rem;
+
+            @media(max-width: $breakpoint480) {
+                padding: 12px;
+                width: 100%;
+                font-size: 1rem;
+            }
+            @media(max-width: $breakpoint375) {
+                font-size: 0.875rem;
+            }
 
             &--primary {
                 background: var(--main-color);

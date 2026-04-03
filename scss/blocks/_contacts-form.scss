@@ -3,13 +3,31 @@
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
     background: var(--accent-color);
 
-    padding: 56px 80px 56px 128px;
+    padding: 56px 20px 56px;
+
+    @media(max-width: $breakpoint768) {
+        padding: 40px 24px;
+    }
+    @media(max-width: $breakpoint480) {
+        padding: 26px 8px 44px;
+    }
 
     &__wrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 70px;
+
+        max-width: 1240px;
+        margin: 0 auto;
+
+        @media(max-width: $breakpoint1280) {
+            gap: 36px;
+        }
+        @media(max-width: $breakpoint1024) {
+            flex-direction: column;
+            gap: 52px;
+        }
     }
     &__content {
         max-width: 790px;
@@ -20,8 +38,19 @@
         font-size: 1.5rem;
         text-transform: uppercase;
         color: var(--secondary-color);
+
+        @media(max-width: $breakpoint768) {
+            text-align: center;
+        }
+        @media(max-width: $breakpoint480) {
+            font-size: 1.25rem;
+        }
     }
     &__form {
         margin-top: 24px;
+
+        @media(max-width: $breakpoint480) {
+            margin-top: 16px;
+        }
     }
 }

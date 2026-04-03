@@ -1,8 +1,39 @@
 .region-content {
 
+    &__top {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 32px;
+
+        @media(max-width: $breakpoint768) {
+            justify-content: flex-start;
+            margin-bottom: 16px;
+        }
+        @media(max-width: $breakpoint480) {
+            justify-content: center;
+        }
+
+        &-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--accent-color-2);
+
+            @media(max-width: $breakpoint480) {
+                font-size: 1.25rem;
+            }
+        }
+    }
     &__wrapper {
         columns: 2;
         column-gap: 20px;
+
+        @media(max-width: $breakpoint768) {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
     }
     &__item {
         height: fit-content;
@@ -16,10 +47,18 @@
             justify-content: space-between;
             gap: 10px;
 
+            @media(max-width: $breakpoint768) {
+                padding: 16px;
+            }
+
             & span {
                 font-weight: 600;
                 font-size: 1.5rem;
                 color: var(--secondary-color);
+
+                @media(max-width: $breakpoint992) {
+                    font-size: 1.25rem;
+                }
             }
         }
         &-content {
@@ -29,6 +68,10 @@
             grid-template-rows: 0fr;
             overflow: hidden;
             transition: grid-template-rows 0.3s ease-in-out;
+
+            @media(max-width: $breakpoint480) {
+                padding: 0 28px;
+            }
         }
         &-list {
             display: flex;
@@ -40,6 +83,10 @@
                 font-size: 1.25rem;
                 line-height: 160%;
                 color: var(--secondary-color);
+
+                @media(max-width: $breakpoint480) {
+                    font-size: 1rem;
+                }
             }
         }
 

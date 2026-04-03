@@ -12,8 +12,16 @@
             padding: 20px 18px;
             gap: 16px;
 
+            @media(max-width: $breakpoint1280) {
+                height: 240px;
+            }
+
             &-img {
                 height: 220px;
+
+                @media(max-width: $breakpoint1280) {
+                    height: 160px;
+                }
             }
             &-name {
                 font-size: 1.25rem;
