@@ -10,11 +10,16 @@
 @import "./blocks/catalog-menu-subsection";
 @import "./blocks/footer";
 @import "./blocks/modal";
+@import "./blocks/modal-form";
+@import "./blocks/modal-success";
+@import "./blocks/cookie";
+@import "./blocks/form-modal";
 @import "./blocks/menu";
 @import "./blocks/menu-nav";
 @import "./blocks/ui";
 @import "./blocks/template-swiper-ui";
 @import "./blocks/breadcrumb";
+@import "./blocks/privacy-policy";
 // Custom
 @import "./blocks/custom-checkbox";
 @import "./blocks/custom-radio";
@@ -46,6 +51,7 @@
 @import "./blocks/hero";
 @import "./blocks/hero-form";
 @import "./blocks/hero-swiper";
+@import "./blocks/construction";
 
 // Catalog detail page blocks
 @import "./blocks/catalog-detail";

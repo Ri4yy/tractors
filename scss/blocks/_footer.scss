@@ -120,10 +120,15 @@
             }
         }
         &-link {
+            display: block;
             font-weight: 400;
             font-size: 1rem;
             line-height: 150%;
             color: var(--secondary-color);
+
+            @media(max-width: $breakpoint600) {
+                text-align: center;
+            }
         }
     }
 

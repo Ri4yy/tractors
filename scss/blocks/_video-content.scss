@@ -56,9 +56,16 @@
     border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
+    
+    height: 280px;
 
     @media(max-width: $breakpoint480) {
         height: 230px;
+    }
+
+    & iframe {
+        height: inherit;
+        width: 100%;
     }
 
     &__thumb {

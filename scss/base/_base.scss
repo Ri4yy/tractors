@@ -13,9 +13,11 @@ h1 {
     text-transform: uppercase;
     color: var(--main-color);
 
+
     & span {
         font-size: 2.5rem;
         color: var(--secondary-color);
+
     }
 }
 h2, .h2 {
@@ -74,15 +76,55 @@ h2, .h2 {
 .section-breadcrumb {
     padding-top: 40px;
 
-    @media(max-width: $breakpoint768) {
-        padding: 30px 0;
-    }
+    // @media(max-width: $breakpoint768) {
+    //     padding: 30px 0;
+    // }
 }
 .section-title {
     padding-top: 48px;
 
     @media(max-width: $breakpoint768) {
         padding: 30px 0;
+    }
+
+    & h1 {
+        @media(max-width: $breakpoint992) {
+            font-size: 2.25rem;
+        }
+        @media(max-width: $breakpoint768) {
+            font-size: 2rem;
+        }
+        @media(max-width: $breakpoint480) {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        & span {
+            @media(max-width: $breakpoint992) {
+                font-size: 1.75rem;
+            }
+            @media(max-width: $breakpoint768) {
+                font-size: 1.5rem;
+            }
+            @media(max-width: $breakpoint480) {
+                display: block;
+                font-size: 1.25rem;
+            }
+        }
+    }
+}
+
+.section-construction {
+    padding-bottom: 110px;
+
+    @media(max-width: $breakpoint1280) {
+        padding-bottom: 80px;
+    }
+    @media(max-width: $breakpoint1024) {
+        padding-bottom: 40px;
+    }
+    @media(max-width: $breakpoint768) {
+        padding-bottom: 30px;
     }
 }
 

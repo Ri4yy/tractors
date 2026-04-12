@@ -56,6 +56,12 @@
     border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
+    height: 500px;
+
+    & iframe {
+        height: inherit;
+        width: 100%;
+    }
 
     &::after {
         content: '';
@@ -205,8 +211,8 @@
 }
 
 .reviews-swiper {
-    padding: 16px;
-    margin: -16px;
+    padding: 16px !important;
+    margin: -16px !important;
 }
 
 .shorts-swiper-btn, .reviews-swiper-btn {

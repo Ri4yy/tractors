@@ -96,6 +96,11 @@
     flex-direction: column;
     justify-content: flex-end;
     min-height: 140px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
 
     &__icon {
         width: 52px;
@@ -127,6 +132,11 @@
     cursor: pointer;
 
     height: 374px;
+
+    & iframe {
+        height: inherit;
+        width: 100%;
+    }
 
     &__thumb {
         width: 100%;

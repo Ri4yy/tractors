@@ -15,6 +15,65 @@
     }
 }
 
+.btn {
+
+    &-blue {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--main-color);
+        background-color: var(--main-color);
+        color: #fff;
+        transition: border-color 0.35s ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(90deg, #009fd9 0%, #005473 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        > * {
+            position: relative;
+            z-index: 1;
+        }
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+    &-orange {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--accent-color);
+        background-color: var(--accent-color);
+        color: #fff;
+        transition: border-color 0.35s ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(90deg, #ff4616 0%, #b12400 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        > * {
+            position: relative;
+            z-index: 1;
+        }
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+}
+
 .select-wrapper {
     position: relative;
 
@@ -23,7 +82,7 @@
     }
     &.open {
         & .select-wrapper-trigger {
-            z-index: 2;
+            z-index: 3;
         }
     }
 
@@ -69,7 +128,7 @@
 
         border-radius: 4px;
         padding: 56px 0 12px 0;
-        z-index: 1;
+        z-index: 2;
 
         &-option {
             padding: 12px;
@@ -134,11 +193,14 @@
         }
 
         &:checked + span:before {
-            background-image: url("/assets/img/icons/light-checkbox.svg");
+            background-image: url("../assets/img/icons/light-checkbox.svg");
             background-repeat: no-repeat;
             background-position: 50%;
             background-color: var(--secondary-color);
         }
+    }
+    & a {
+        color: var(--accent-color-2);
     }
     & span {
         display: inline-block;
@@ -206,7 +268,7 @@
         }
 
         &:checked + span:before {
-            background-image: url("/assets/img/icons/dark-checkbox.svg");
+            background-image: url("../assets/img/icons/dark-checkbox.svg");
             background-repeat: no-repeat;
             background-position: 50%;
         }
@@ -282,7 +344,7 @@
         }
 
         &:checked + span:before {
-            background-image: url("/assets/img/icons/orange-checkbox.svg");
+            background-image: url("../assets/img/icons/orange-checkbox.svg");
             background-repeat: no-repeat;
             background-position: 50%;
         }
@@ -414,6 +476,24 @@
             border: 1px solid #a3a3a1;
             padding: 8px 30px;
             width: 100%;
+        }
+    }
+}
+
+.form {
+
+    &__area {
+
+        &-error {
+            padding-left: 12px;
+            font-weight: 400;
+            font-size: 0.75rem;
+            line-height: 137%;
+            color: #B91C20;
+
+            &:empty {
+                display: none;
+            }
         }
     }
 }

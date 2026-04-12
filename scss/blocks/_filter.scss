@@ -4,9 +4,15 @@
     background: #f1f1f1;
     padding: 24px 30px;
 
-    @media(max-width: $breakpoint992) {
-        height: 100dvh;
-        overflow-y: scroll;
+    // @media(max-width: $breakpoint992) {
+    //     height: 100dvh;
+    //     overflow-y: scroll;
+    // }
+    @media(max-width: $breakpoint1024) {
+        padding: 42px 36px;
+    }
+    @media(max-width: $breakpoint480) {
+        padding: 32px 26px;
     }
 
     &__top {
@@ -16,6 +22,10 @@
             text-transform: uppercase;
             text-align: center;
             color: var(--secondary-color);
+
+            @media(max-width: $breakpoint480) {
+                font-size: 1.25rem;
+            }
         }
     }
     &__wrapper {
@@ -24,14 +34,35 @@
         display: flex;
         align-items: flex-end;
         gap: 20px;
+
+        @media(max-width: $breakpoint1024) {
+            margin-top: 36px;
+            
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 36px;
+        }
+        @media(max-width: $breakpoint480) {
+            margin-top: 28px;
+            gap: 20px;
+        }
     }
     &__inner {
         display: flex;
         width: 100%;
     }
     &__group-btn {
+        position: relative;
         display: flex;
         flex-direction: column;
+
+        @media(max-width: $breakpoint1024) {
+            flex-direction: row-reverse;
+        }
+        @media(max-width: $breakpoint480) {
+            width: 100%;
+            flex-direction: column;
+        }
     }
     &__btn {
         border-radius: 4px;
@@ -40,8 +71,16 @@
         font-weight: 700;
         font-size: 1.25rem;
         color: #fff;
+        cursor: pointer;
 
         transition: all .3s;
+
+        @media(max-width: $breakpoint1280) {
+            font-size: 1rem;
+        }
+        @media(max-width: $breakpoint480) {
+            width: 100%;
+        }
 
         &--clear {
             text-decoration: underline;
@@ -57,12 +96,18 @@
     &__close {
         display: none;
 
-        @media(max-width: $breakpoint992) {
+        @media(max-width: $breakpoint1024) {
             position: absolute;
-            top: 17px;
-            right: 24px;
+            top: 24px;
+            right: 18px;
+            width: 20px;
 
             display: flex;
+        }
+        @media(max-width: $breakpoint480) {
+            top: 14px;
+            right: 12px;
+            width: 16px;
         }
 
         & img {
@@ -70,11 +115,33 @@
         }
     }
 
-    &--repair {
-        & .filter__group-btn {
-            flex-direction: row;
-        }
-    }
+    // &--repair {
+    //     & .filter__group-btn {
+    //         flex-direction: row;
+
+    //         & .filter__btn {
+    //             @media(max-width: $breakpoint480) {
+    //                 padding: 10px;
+    //             }
+    //         }
+    //     }
+
+    //     & .filter__wrapper {
+    //         @media(max-width: $breakpoint1024) {
+    //             align-items: center;
+    //         }
+    //     }
+    //     & .filter-category {
+    //         @media(max-width: $breakpoint600) {
+    //             flex-direction: column;
+    //         }
+    //     }
+    //     .filter-category-checkbox {
+    //         @media(max-width: $breakpoint600) {
+    //             margin-top: 0;
+    //         }
+    //     }
+    // }
 }
 
 .filter-category {
@@ -82,16 +149,35 @@
     gap: 20px;
     width: 100%;
 
+    @media(max-width: $breakpoint1280) {
+        gap: 16px;
+    }
+    @media(max-width: $breakpoint1024) {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    @media(max-width: $breakpoint480) {
+        flex-direction: column;
+    }
+
     &__list {
         flex-grow: 1;
     }
     &__top {
         margin-bottom: 10px;
 
+        @media(max-width: $breakpoint1280) {
+            margin-bottom: 4px;
+        }
+
         & span {
             font-weight: 600;
             font-size: 1rem;
             color: var(--secondary-color);
+
+            @media(max-width: $breakpoint1280) {
+                font-size: 0.875rem;
+            }
         }
     }
     &__icon {
@@ -147,7 +233,11 @@
 
     &.open &__trigger svg {
         transform: rotate(180deg);
-        
+    }
+    &.open {
+        & .filter-category-select__trigger {
+            z-index: 2;
+        }
     }
 
     &__trigger svg {
@@ -157,7 +247,6 @@
 
     &__trigger {
         position: relative;
-        z-index: 2;
 
         border: 1px solid #979797;
         border-radius: 4px;
@@ -168,11 +257,24 @@
         align-items: center;
 
         cursor: pointer;
+
+        @media(max-width: $breakpoint1280) {
+            padding: 10px 12px;
+        }
     }
     &__title {
         font-weight: 400;
         font-size: 1rem;
         color: var(--secondary-color);
+
+        width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media(max-width: $breakpoint1280) {
+            font-size: 0.875rem;
+        }
     }
     &__description {
         opacity: 0;
@@ -189,6 +291,10 @@
         border-radius: 4px;
         padding: 56px 0 12px 0;
         z-index: 1;
+
+        @media(max-width: $breakpoint1280) {
+            padding: 44px 0 12px 0;
+        }
 
         &-option {
             padding: 12px;
@@ -220,6 +326,10 @@
         font-size: 1.25rem;
         color: var(--secondary-color);
 
+        @media(max-width: $breakpoint1280) {
+            font-size: 1rem;
+        }
+
         &:hover {
             background: var(--accent-color);
         }
@@ -227,5 +337,41 @@
         &.active {
             background: var(--accent-color);
         }
+    }
+}
+
+.bx-filter-popup-result {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.25);
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    position: absolute;
+    // bottom: 0;
+    top: calc(100% + 10px);
+
+    & a {
+        color: var(--main-color);
+    }
+}
+
+.smartfilter {
+    width: 100%;
+}
+
+// overlay
+body:has(.catalog-main__filter.open)::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100dvh;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    pointer-events: auto;
+
+    @media(min-width: 1025px) {
+        display: none;
     }
 }

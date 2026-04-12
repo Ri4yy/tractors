@@ -162,6 +162,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const filterPanelBtn = document.querySelector('.filter-panel__btn');
+    const catalogMainFilter = document.querySelector('.catalog-main__filter');
+    const filterClose = document.querySelector('.filter__close');
+
+    if (filterPanelBtn && catalogMainFilter) {
+        filterPanelBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            catalogMainFilter.classList.add('open');
+        });
+
+        if (filterClose) {
+            filterClose.addEventListener('click', () => {
+                catalogMainFilter.classList.remove('open');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!catalogMainFilter.classList.contains('open')) return;
+            const filter = catalogMainFilter.querySelector('.filter');
+            if (filter && filter.contains(e.target)) return;
+            catalogMainFilter.classList.remove('open');
+        });
+    }
+
     document.querySelectorAll('.filter-category-select').forEach((root) => {
         const trigger = root.querySelector('.filter-category-select__trigger');
         const panel = root.querySelector('.filter-category-select__description');
@@ -182,6 +206,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (panel) panel.classList.remove('active');
         });
     });
+
+    // Cookie
+    function checkCookies(){
+        let cookieDate = localStorage.getItem('cookieDate');
+        let cookieNotification = document.getElementById('cookie_notification');
+        let cookieBtn = cookieNotification.querySelector('.cookie__btn');
+        
+        if( !cookieDate || (+cookieDate + 31536000000) < Date.now() ){
+            cookieNotification.classList.add('show');
+        }
+        
+        cookieBtn.addEventListener('click', function(){
+            localStorage.setItem( 'cookieDate', Date.now() );
+            cookieNotification.classList.remove('show');
+        })
+    }
+    checkCookies();
 
     // Custom select logic
     const wrappers = document.querySelectorAll('.select-wrapper');
@@ -275,6 +316,181 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => {
             if (!wrap.contains(e.target)) closeMenu();
         });
+    });
+
+    // Rutube Video Player
+    function getRutubeInfo(url) {
+        const shortsMatch = url.match(/rutube\.ru\/shorts\/([a-zA-Z0-9]+)/);
+        if (shortsMatch) {
+            return {
+                embedUrl: `https://rutube.ru/play/embed/${shortsMatch[1]}/`,
+                thumbUrl: `https://rutube.ru/api/video/${shortsMatch[1]}/thumbnail/?redirect=1`,
+            };
+        }
+
+        const embedMatch = url.match(/rutube\.ru\/play\/embed\/([a-zA-Z0-9]+)/);
+        if (embedMatch) {
+            return {
+                embedUrl: `https://rutube.ru/play/embed/${embedMatch[1]}/`,
+                thumbUrl: `https://rutube.ru/api/video/${embedMatch[1]}/thumbnail/?redirect=1`,
+            };
+        }
+
+        const videoMatch = url.match(/rutube\.ru\/video\/([a-zA-Z0-9]+)/);
+        if (videoMatch) {
+            return {
+                embedUrl: `https://rutube.ru/play/embed/${videoMatch[1]}/`,
+                thumbUrl: `https://rutube.ru/api/video/${videoMatch[1]}/thumbnail/?redirect=1`,
+            };
+        }
+
+        return null;
+    }
+
+    function initVideoPlay(configs) {
+        configs.forEach(({ playBtn, container, thumb }) => {
+            document.querySelectorAll(playBtn).forEach((btn) => {
+                const src = btn.dataset.src;
+                if (!src) return;
+
+                btn.addEventListener('click', () => {
+                    const info = getRutubeInfo(src);
+                    if (!info) return;
+
+                    const wrapper = btn.closest(container);
+                    if (!wrapper) return;
+
+                    const iframe = document.createElement('iframe');
+                    iframe.src = info.embedUrl + '?autoplay=1';
+                    iframe.frameBorder = '0';
+                    iframe.allowFullscreen = true;
+                    iframe.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media;';
+
+                    const thumbEl = wrapper.querySelector(thumb);
+                    if (thumbEl) thumbEl.remove();
+                    btn.remove();
+
+                    wrapper.appendChild(iframe);
+                });
+            });
+        });
+    }
+
+    initVideoPlay([
+        { playBtn: '.about-video__play',  container: '.about-video',  thumb: '.about-video__thumb'  },
+        { playBtn: '.video-card__play',   container: '.video-card',   thumb: '.video-card__thumb'   },
+    ]);
+
+    // Construction block
+    document.querySelectorAll('.construction').forEach((construction) => {
+        const buttons = Array.from(construction.querySelectorAll('.construction-list__item'));
+        const items = Array.from(construction.querySelectorAll('.construction__item-inner'));
+        if (!buttons.length || !items.length) return;
+
+        const itemByNumber = new Map();
+        const firstGroup = [];
+        const secondGroup = [];
+
+        items.forEach((item, idx) => {
+            const numEl = item.querySelector('.construction__item-inner-title span');
+            const parsed = numEl ? parseInt(numEl.textContent, 10) : NaN;
+            const number = Number.isFinite(parsed) ? parsed : idx + 1;
+            itemByNumber.set(number, item);
+
+            const parentItem = item.closest('.construction__item');
+            const itemGroup = parentItem ? Array.from(parentItem.parentElement?.children || []).indexOf(parentItem) : -1;
+            if (itemGroup === 0) firstGroup.push(number);
+            else secondGroup.push(number);
+        });
+
+        if (!firstGroup.length || !secondGroup.length) return;
+
+        const mediaQuery = window.matchMedia('(max-width: 1024px)');
+
+        let lastClicked = buttons.find((btn) => btn.classList.contains('active')) || buttons[0];
+        let lastClickedNumber = parseInt(lastClicked?.textContent || '', 10) || firstGroup[0];
+
+        let firstActive = firstGroup.includes(lastClickedNumber) ? lastClickedNumber : firstGroup[0];
+        let secondActive = secondGroup.slice(0, 2);
+        let mobileActive = lastClickedNumber;
+
+        function render() {
+            const isMobile = mediaQuery.matches;
+
+            itemByNumber.forEach((item) => {
+                item.hidden = true;
+            });
+
+            if (isMobile) {
+                const mobileItem = itemByNumber.get(mobileActive);
+                if (mobileItem) mobileItem.hidden = false;
+            } else {
+                const firstItem = itemByNumber.get(firstActive);
+                if (firstItem) firstItem.hidden = false;
+
+                secondActive.forEach((num) => {
+                    const item = itemByNumber.get(num);
+                    if (item) item.hidden = false;
+                });
+            }
+
+            buttons.forEach((btn) => {
+                const number = parseInt(btn.textContent || '', 10);
+                let isActive = false;
+
+                if (isMobile) {
+                    isActive = number === mobileActive;
+                } else {
+                    isActive = number === firstActive || secondActive.includes(number);
+                }
+
+                btn.classList.toggle('active', isActive);
+            });
+        }
+
+        buttons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const number = parseInt(btn.textContent || '', 10);
+                if (!Number.isFinite(number) || !itemByNumber.has(number)) return;
+
+                lastClickedNumber = number;
+                mobileActive = number;
+
+                if (!mediaQuery.matches) {
+                    if (firstGroup.includes(number)) {
+                        firstActive = number;
+                    } else if (secondGroup.includes(number)) {
+                        if (!secondActive.includes(number)) {
+                            secondActive.push(number);
+                            if (secondActive.length > 2) secondActive.shift();
+                        }
+                    }
+                }
+
+                render();
+            });
+        });
+
+        function handleBreakpointChange() {
+            if (mediaQuery.matches) {
+                mobileActive = lastClickedNumber;
+            } else if (firstGroup.includes(lastClickedNumber)) {
+                firstActive = lastClickedNumber;
+            } else if (secondGroup.includes(lastClickedNumber) && !secondActive.includes(lastClickedNumber)) {
+                secondActive.push(lastClickedNumber);
+                if (secondActive.length > 2) secondActive.shift();
+            }
+
+            render();
+        }
+
+        if (typeof mediaQuery.addEventListener === 'function') {
+            mediaQuery.addEventListener('change', handleBreakpointChange);
+        } else if (typeof mediaQuery.addListener === 'function') {
+            mediaQuery.addListener(handleBreakpointChange);
+        }
+
+        render();
     });
 
     // Map

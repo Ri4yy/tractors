@@ -1,0 +1,76 @@
+.modal-success {
+    $modal-width: 600px;
+
+    &__body {
+        max-width: $modal-width;
+        width: 100%;
+
+        @media(max-width: $breakpoint768) {
+            width: min(92%, $modal-width);
+        }
+    }
+    &__wrapper {
+        padding: 80px 60px;
+
+        @media(max-width: $breakpoint768) {
+            border-radius: 10px;
+            padding: 80px 50px;
+        }
+        @media(max-width: $breakpoint375) {
+            padding: 60px 30px;
+        }
+    }
+    &__close {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 24px;
+    
+        @media(max-width: $breakpoint480) {
+            width: 12px;
+            top: 24px;
+            right: 24px;
+        }
+    }
+}
+
+.modal-success-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__wrapper {
+        margin-top: 20px;
+
+        @media(max-width: $breakpoint768) {
+            margin-top: 30px;
+        }
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 133%;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        text-align: center;
+
+        @media(max-width: $breakpoint480) {
+            font-size: 22px;
+        }
+    }
+    &__text {
+        margin-top: 24px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 142%;
+        text-align: center;
+        color: #4e4e4e;
+
+        @media(max-width: $breakpoint768) {
+            margin-top: 12px;
+        }
+        @media(max-width: $breakpoint480) {
+            font-size: 14px;
+        }
+    }
+}

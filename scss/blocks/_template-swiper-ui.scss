@@ -28,7 +28,7 @@
         }
     }
     &-pagination {
-        position: relative;
+        position: relative !important;
         bottom: unset !important;
         top: unset !important;
         width: fit-content !important;

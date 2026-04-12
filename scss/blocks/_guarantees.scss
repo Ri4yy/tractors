@@ -88,7 +88,7 @@
                     flex-shrink: 0;
                     width: 48px;
                     height: 48px;
-                    background-image: url("/assets/img/icons/arrow.png");
+                    background-image: url("../assets/img/icons/arrow.png");
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: center;
@@ -233,7 +233,7 @@
         }
 
         &-big-item {
-            background-image: url("/assets/img/bg/guarantee-bg.png");
+            background-image: url("../assets/img/bg/guarantee-bg.png");
 
             background-position: 100% 100%;
             background-repeat: no-repeat;
@@ -259,7 +259,7 @@
                 height: 360px;
             }
             @media(max-width: $breakpoint480) {
-                background-image: url("/assets/img/bg/guarantee-bg-xs.png");
+                background-image: url("../assets/img/bg/guarantee-bg-xs.png");
                 background-position: 50% 60%;
                 align-items: center;
                 padding: 16px;
@@ -337,6 +337,10 @@
             &--secondary {
                 background: #f1f1f1;
                 color: var(--secondary-color);
+
+                &:hover {
+                    color: var(--main-color);
+                }
             }
         }
     }

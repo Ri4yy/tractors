@@ -2,6 +2,8 @@
     position: relative;
 
     &__inner {
+        position: relative;
+        overflow: hidden;
         height: 710px;
 
         background: var(--main-bg);
@@ -12,10 +14,40 @@
         @media(max-width: $breakpoint480) {
             height: 360px;
         }
-
+ 
         & .container {
+            position: relative;
+            z-index: 2;
             height: 100%;
         }
+    }
+
+    &__bg-video {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .3s ease;
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &__bg-video--ready {
+        opacity: 1;
     }
     &__content {
         height: 100%;
@@ -114,9 +146,14 @@
             font-weight: 600;
             font-size: 1rem;
             color: #fff;
+            transition: color 0.15s ease;
 
             @media(max-width: $breakpoint480) {
                 font-size: 0.75rem;
+            }
+
+            &:hover {
+                color: var(--main-color);
             }
         }
     }

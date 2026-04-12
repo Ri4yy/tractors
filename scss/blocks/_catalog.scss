@@ -32,7 +32,7 @@
         display: inline-flex;
         align-items: center;
         gap: 28px;
-        color: #FF4616; /* Orange color from screenshot */
+        color: var(--accent-color-2);
         font-weight: 700;
         font-size: 1.25rem;
         text-decoration: none;
@@ -46,18 +46,19 @@
         }
 
         &:hover {
-            opacity: 0.8;
+            color: var(--main-color);
         }
 
         svg {
             width: 16px;
             height: 16px;
-            fill: currentColor;
+            fill: var(--accent-color-2);
             transition: transform 0.3s ease;
         }
 
         &:hover svg {
             transform: translateX(4px);
+            fill: var(--main-color);
         }
     }
 }

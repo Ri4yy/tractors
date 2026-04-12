@@ -76,7 +76,7 @@
                 padding: 4px 0;
 
                 &::before {
-                    content: url("/assets/img/icons/arrow-mini.png");
+                    content: url("../assets/img/icons/arrow-mini.png");
                 }
 
                 @media(max-width: $breakpoint768) {

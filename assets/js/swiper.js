@@ -240,8 +240,25 @@ const reviewsSwiper = new Swiper('.reviews-swiper', {
     },
 });
 const applicationsSwiper = new Swiper('.applications-swiper', {
-    slidesPerView: 4,
-    spaceBetween: 20,
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 12,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        992: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1280: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+    },
+
     navigation: {
       nextEl: '.applications-swiper-btn--next',
       prevEl: '.applications-swiper-btn--prev',
@@ -317,5 +334,150 @@ const heroSwiper = new Swiper('.hero-swiper', {
     navigation: {
       nextEl: '.hero-swiper-btn--next',
       prevEl: '.hero-swiper-btn--prev',
+    },
+});
+
+function mountHeroVideo(inner) {
+    if (!inner || inner.querySelector('.hero__bg-video')) return;
+
+    const sourceUrl = inner.dataset.videoSrc;
+    if (!sourceUrl) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'hero__bg-video';
+
+    const video = document.createElement('video');
+    video.src = sourceUrl;
+    video.muted = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.disablePictureInPicture = true;
+    video.controls = false;
+    video.tabIndex = -1;
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('loop', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('aria-hidden', 'true');
+
+    const showVideo = () => {
+        wrapper.classList.add('hero__bg-video--ready');
+    };
+
+    video.addEventListener('loadeddata', showVideo, { once: true });
+    video.addEventListener('canplay', showVideo, { once: true });
+
+    wrapper.appendChild(video);
+    inner.appendChild(wrapper);
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+    }
+}
+
+function unmountHeroVideo(inner) {
+    if (!inner) return;
+    const video = inner.querySelector('.hero__bg-video');
+    if (video) {
+        const media = video.querySelector('video');
+        if (media) {
+            media.pause();
+            media.removeAttribute('src');
+            media.load();
+        }
+        video.remove();
+    }
+}
+
+function updateHeroVideos(swiper) {
+    swiper.slides.forEach((slide, idx) => {
+        const inner = slide.querySelector('.hero__inner');
+        if (!inner) return;
+
+        if (idx === swiper.activeIndex) {
+            mountHeroVideo(inner);
+        } else {
+            unmountHeroVideo(inner);
+        }
+    });
+}
+
+if (heroSwiper && heroSwiper.slides && heroSwiper.slides.length) {
+    let heroVideoEnabled = false;
+
+    const enableHeroVideo = () => {
+        if (heroVideoEnabled) return;
+        heroVideoEnabled = true;
+        updateHeroVideos(heroSwiper);
+    };
+
+    if (document.readyState === 'complete') {
+        enableHeroVideo();
+    } else {
+        window.addEventListener('load', enableHeroVideo, { once: true });
+    }
+
+    heroSwiper.on('slideChangeTransitionStart', () => {
+        if (!heroVideoEnabled) return;
+        updateHeroVideos(heroSwiper);
+    });
+}
+
+const sectionSwiper = new Swiper('.section-swiper', {
+    // Optional parameters
+    enabled: true,
+
+    breakpoints: {
+        0: {
+            allowTouchMove: true,
+            slidesPerView: 1,
+            spaceBetween: 16,
+            grid: {
+                rows: 2,
+                fill: "row",
+            }
+        },
+        480: {
+            allowTouchMove: true,
+            slidesPerView: 2,
+            spaceBetween: 16,
+            grid: {
+                rows: 2,
+                fill: "row",
+            }
+        },
+        880: {
+            allowTouchMove: true,
+            slidesPerView: 3,
+            spaceBetween: 20,
+            grid: {
+                rows: 2,
+                fill: "row",
+            }
+        },
+        1280: {
+            allowTouchMove: true,
+            slidesPerView: 4,
+            spaceBetween: 20,
+            grid: {
+                rows: 2,
+                fill: "row",
+            }
+        },
+    },
+  
+    // If we need pagination
+    pagination: {
+      el: '.section-swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.section-swiper-btn-next',
+      prevEl: '.section-swiper-btn-prev',
     },
 });

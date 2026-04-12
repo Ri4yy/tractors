@@ -8,6 +8,18 @@
         &-list {
             display: flex;
             gap: 44px;
+
+            @media(max-width: $container-width) {
+                gap: 32px;
+            }
+            @media(max-width: $breakpoint1280) {
+                flex-wrap: wrap;
+                row-gap: 20px;
+            }
+            @media(max-width: $breakpoint480) {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         &-link {
             display: block;
@@ -16,6 +28,10 @@
             font-weight: 500;
             font-size: 1.5rem;
             color: #8a8a8a;
+
+            @media(max-width: $breakpoint600) {
+                font-size: 1.25rem;
+            }
 
             &:hover {
                 color: var(--secondary-color);
@@ -37,6 +53,10 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+
+        @media(max-width: $breakpoint1024) {
+            grid-template-columns: 1fr;
+        }
     }
     &__img {
         min-height: 560px;
@@ -44,12 +64,26 @@
         background: #f1f1f1;
         overflow: hidden;
 
+        @media(max-width: $breakpoint1024) {
+            min-height: 440px;
+            max-width: 700px;
+        }
+
+        @media(max-width: $breakpoint480) {
+            min-height: 280px;
+        }
+
         &-link {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 100%;
+        }
+        &-img {
+            @media(max-width: $breakpoint480) {
+                max-height: 220px;
+            }
         }
     }
 
@@ -59,10 +93,21 @@
         justify-content: space-between;
         gap: 32px;
 
+        container-name: content;
+        container-type: inline-size;
+
+        @media(max-width: $breakpoint768) {
+            gap: 20px;
+        }
+
         &-text {
             font-weight: 500;
-            font-size: 20px;
+            font-size: 1.25rem;
             color: var(--secondary-color);
+
+            @media(max-width: $breakpoint600) {
+                font-size: 1rem;
+            }
         }
 
         &-props {
@@ -76,6 +121,10 @@
                 display: flex;
                 align-items: center;
                 gap: 28px;
+
+                @media(max-width: $breakpoint480) {
+                    padding: 10px 14px;
+                }
 
                 &:nth-of-type(even) {
                     background: #f1f1f1;
@@ -187,5 +236,65 @@
         font-weight: 600;
         font-size: 1.25rem;
         color: #fff;
+
+        @media(max-width: $breakpoint600) {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+        @media(max-width: $breakpoint480) {
+            width: 100%;
+        }
     }
 }
+
+@container content (max-width: 674px) {
+    .catalog-detail__price-label {
+        font-size: 0.875rem;
+    }
+    .catalog-detail__price-value {
+        font-size: 1rem;
+    }
+} 
+@container content (max-width: 620px) {
+    .catalog-detail__price-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+} 
+@container content (max-width: 580px) {
+    .catalog-detail__content-props-item-name {
+        font-size: 1rem;
+    }
+    .catalog-detail__content-props-item-value {
+        font-size: 1rem;
+    }
+} 
+@container content (max-width: 400px) {
+    .catalog-detail__content-props-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .catalog-detail__content-props-item-name {
+        max-width: 100%;
+    }
+}
+@container content (max-width: 310px) {
+    .catalog-detail__price-label {
+        font-size: 0.775rem;
+    }
+    .catalog-detail__price-item--main .catalog-detail__price-label {
+        line-height: 1;
+    }
+    .catalog-detail__price-item-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+} 
+@container content (max-width: 280px) {
+    .catalog-detail__leasing {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+} 

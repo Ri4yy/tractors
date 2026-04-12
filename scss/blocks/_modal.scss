@@ -1,6 +1,4 @@
 .modal {
-    $modal-width: 1080px;
-
     opacity: 0;
 
     &.active {
@@ -21,70 +19,20 @@
         translate: -50% -50%;
         z-index: 8;
         pointer-events: none;
+    }
 
-
-        &--form {
-            max-width: $modal-width;
-            width: 100%;
-    
-            @media(max-width: calc($modal-width + 20px)) {
-                max-width: 98vw;
-            }
-            @media(max-width: $breakpoint768) {
-                max-width: 100%;
-            }
-        }
+    &__info {
+        height: 100%;
     }
 
     &__wrapper {
         position: relative;
-        background: $main-color;
-        border-radius: 40px;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        background: #fff;
+        border-radius: 6px;
 
-        &--form {
-            padding: 60px;
+    } 
 
-            @media(max-width: $breakpoint1024) {
-                padding: 40px;
-            }
-            @media(max-width: $breakpoint768) {
-                padding: 95px 20px;
-                border-radius: 0;
-            }
-            @media(max-width: $breakpoint480) {
-                min-height: 100dvh;
-            }
-        }
-    }
-
-    &__header {
-        width: calc((640px / 960px) * 100%);
-
-        @media(max-width: $breakpoint768) {
-            width: 100%;
-        }
-    }
-    &__title {
-        @media(max-width: $breakpoint1024) {
-            font-size: 36px;
-        }
-    }
-    &__text {
-        margin-top: 20px;
-
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 150%;
-        color: $main-text;
-
-        @media(max-width: $breakpoint1024) {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        @media(max-width: $breakpoint480) {
-            font-size: 14px;
-        }
-    }
     &::before {
         content: '';
         position: fixed;
@@ -99,20 +47,4 @@
         z-index: 7;
         pointer-events: none;
     }
-}
-
-.close-modal {
-    display: flex;
-    position: absolute;
-    top: 40px;
-    right: 40px;
-
-    @media(max-width: $breakpoint768) {
-        width: 12px;
-    }
-    @media(max-width: $breakpoint480) {
-        top: 24px;
-        right: 24px;
-    }
-}
-
+}  

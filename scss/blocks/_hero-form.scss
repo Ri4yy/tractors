@@ -60,6 +60,7 @@
         font-size: 1rem;
         color: #fff;
         white-space: nowrap;
+        overflow: visible;
 
         @media(max-width: $breakpoint480) {
             width: 100%;

@@ -5,26 +5,51 @@
 
     &__btn {
         display: none;
-        height: 40px;
-        width: 40px;
+        
+        padding: 6px 12px;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
         background: #f1f1f1;
         border-radius: 4px;
 
-        @media(max-width: $breakpoint992) {
+        @media(max-width: $breakpoint1024) {
             display: flex;
+            align-items: center;
+            gap: 8px;
         }
         @media(max-width: $breakpoint768) {
-            height: 32px;
-            width: 32px;
+            padding: 4px 12px;
+        }
+        @media(max-width: $breakpoint600) {
+            padding: 4px;
         }
 
         &-icon {
             display: flex;
             align-items: center;
             justify-content: center;
+            
+            height: 32px;
+            width: 32px;
+            
+            @media(max-width: $breakpoint768) {
+                height: 32px;
+                width: 32px;
+            }
+        }
+        &-text {
+            @media(max-width: $breakpoint600) {
+                display: none;
+            }
 
-            height: inherit;
+            & span {
+                font-weight: 600;
+                font-size: 1.25rem;
+                color: var(--secondary-color);
+
+                @media(max-width: $breakpoint768) {
+                    font-size: 1rem;
+                }
+            }
         }
     }
 
@@ -41,7 +66,7 @@
         font-size: 1.25rem;
         color: var(--secondary-color);
 
-        width: 280px;
+        width: 330px;
         height: 44px;
         border-radius: 4px;
         padding: 10px 20px;
@@ -51,17 +76,21 @@
         cursor: pointer;
 
         appearance: none;
-        background-image: url("/assets/img/icons/select-arrow.svg");
+        background-image: url("../assets/img/icons/select-arrow.svg");
         background-repeat: no-repeat;
         background-position: 90% center;
 
         @media(max-width: $breakpoint768) {
-            height: 32px;
-            width: 190px;
+            height: 40px;
+            width: 260px;
 
-            font-size: 0.875rem;
+            padding: 0px 20px;
+            font-size: 1rem;
             background-position: 97% center;
             background-size: 8%;
+        }
+        @media(max-width: $breakpoint375) {
+            width: 245px;
         }
     }
 
@@ -69,7 +98,7 @@
         display: flex;
         gap: 10px;
 
-        @media(max-width: $breakpoint768) {
+        @media(max-width: $breakpoint1024) {
             display: none;
         }
 
