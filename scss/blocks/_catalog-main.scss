@@ -27,7 +27,7 @@
             }
             &.open {
                 display: block;
-                z-index: 4;
+                z-index: 14;
             }
         }
         &--repair {
@@ -93,7 +93,8 @@
         &--col {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            column-gap: 20px;
+            row-gap: 36px;
     
             @media (max-width: $breakpoint1024) {
                 grid-template-columns: repeat(2, 1fr);

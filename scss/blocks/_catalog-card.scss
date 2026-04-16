@@ -189,7 +189,7 @@
             &-wrap {
                 display: flex;
                 align-items: end;
-                gap: 8px;
+                column-gap: 8px;
             }
         }
 
@@ -283,7 +283,7 @@
             }
         }
         &__gallery {
-            width: 400px;
+            width: 465px;
 
             @media(max-width: $breakpoint1024) {
                 width: 320px;
@@ -311,6 +311,9 @@
         &__top {
             max-width: 440px;
         }
+        &__price-item-wrap {
+            flex-wrap: wrap;
+        }
         &__footer {
             flex-direction: row;
             justify-content: space-between;
@@ -333,7 +336,11 @@
     }
 }
 
-
+@container card (max-width: 440px) {
+    .catalog-card__feature {
+        font-size: 0.875rem;
+    }
+}
 @container card (max-width: 400px) {
     .catalog-card__gallery {
         height: 270px;

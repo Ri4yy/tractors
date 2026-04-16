@@ -163,6 +163,7 @@
 }
 
 .review-card {
+    min-height: 191px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
     background: #f1f1f1;
     border-radius: 6px;
@@ -207,6 +208,17 @@
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
+
+        &.open {
+            -webkit-line-clamp: 99;
+        }
+    }
+
+    &__more {
+        font-weight: 500;
+        font-size: 0.75rem;
+        color: #979797;
+        text-align: left;
     }
 }
 

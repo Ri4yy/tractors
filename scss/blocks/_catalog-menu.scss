@@ -149,19 +149,19 @@
 }
 
 // overlay
-.header:has(.catalog-menu.open)::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: calc(100vh - 100%);
-    z-index: 50;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(3px);
-    pointer-events: auto;
+// .header:has(.catalog-menu.open)::before {
+//     content: '';
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     top: 100%;
+//     height: calc(100vh - 100%);
+//     z-index: 50;
+//     background: rgba(0, 0, 0, 0.25);
+//     backdrop-filter: blur(3px);
+//     pointer-events: auto;
 
-    @media(max-width: $breakpoint1024) {
-        display: none;
-    }
-}
+//     @media(max-width: $breakpoint1024) {
+//         display: none;
+//     }
+// }

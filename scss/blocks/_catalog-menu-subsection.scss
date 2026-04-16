@@ -40,7 +40,7 @@
         background: #f1f1f1;
         transition: background .3s ease-in-out;
 
-        height: 164px;
+        min-height: 164px;
 
         &:hover {
             background: var(--accent-color);
@@ -58,6 +58,7 @@
             justify-content: center;
 
             & img {
+                height: inherit;
                 object-fit: contain;
             }
         }

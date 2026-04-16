@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const catalogTrigger = document.querySelector('.header__catalog-trigger');
     const catalogMenu = document.querySelector('.catalog-menu');
+    const headerOverlay = document.querySelector('.header-overlay');
     if (catalogTrigger && catalogMenu) {
         function setCatalogScrollLock(locked) {
             document.documentElement.classList.toggle('no-scroll', locked);
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             catalogMenu.classList.toggle('open');
             setCatalogScrollLock(catalogMenu.classList.contains('open'));
+            headerOverlay.classList.toggle('open');
         });
 
         document.addEventListener('click', (e) => {
@@ -28,7 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (catalogMenu.contains(t) || catalogTrigger.contains(t)) return;
             catalogMenu.classList.remove('open');
             setCatalogScrollLock(false);
+            headerOverlay.classList.remove('open');
         });
+    }
+
+    const header = document.querySelector('.header');
+    const headerWrapper = header?.querySelector('.header__wrapper') || header;
+    if (header && headerWrapper) {
+        const toggleFixedHeader = () => {
+            const headerHeight = headerWrapper.offsetHeight;
+            const isFixed = window.scrollY > headerHeight;
+
+            header.classList.toggle('fixed', isFixed);
+            document.body.style.paddingTop = isFixed ? `${headerHeight}px` : '';
+        };
+
+        toggleFixedHeader();
+        window.addEventListener('scroll', toggleFixedHeader, { passive: true });
+        window.addEventListener('resize', toggleFixedHeader);
     }
 
     // Catalog Gallery Logic
@@ -126,6 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
         trigger.addEventListener('click', () => {
             item.classList.toggle('open');
         });
+    });
+
+    document.addEventListener('click', (e) => {
+        const button = e.target.closest('.review-card__more');
+        if (!button) return;
+
+        const card = button.closest('.review-card');
+        const text = card?.querySelector('.review-card__text');
+        if (!text) return;
+
+        const isOpen = text.classList.toggle('open');
+        button.textContent = isOpen ? 'Скрыть' : 'Подробнее';
     });
 
     document.querySelectorAll('.mobile-menu-section-list__trigger').forEach((btn) => {
@@ -502,6 +533,9 @@ document.addEventListener('DOMContentLoaded', () => {
         northwestern: 'Северо-Западный федеральный округ',          // 3
         ural: 'Уральский федеральный округ',                        // 4
         fareastern: 'Дальневосточный федеральный округ',            // 5
+        southern: 'Южный федеральный округ',                        // 6
+        sibir: 'Сибирский федеральный округ',                       // 7
+        farwest: 'Северо-Кавказский федеральный округ',             // 8
     };
 
     mapLinks.forEach(el => {

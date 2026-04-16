@@ -162,6 +162,7 @@
 
     &__list {
         flex-grow: 1;
+        min-width: 215px;
     }
     &__top {
         margin-bottom: 10px;
@@ -236,7 +237,7 @@
     }
     &.open {
         & .filter-category-select__trigger {
-            z-index: 2;
+            z-index: 4;
         }
     }
 
@@ -267,7 +268,8 @@
         font-size: 1rem;
         color: var(--secondary-color);
 
-        width: 90%;
+        // width: 90%;
+        max-width: 300px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -290,7 +292,7 @@
 
         border-radius: 4px;
         padding: 56px 0 12px 0;
-        z-index: 1;
+        z-index: 3;
 
         @media(max-width: $breakpoint1280) {
             padding: 44px 0 12px 0;
@@ -366,7 +368,7 @@ body:has(.catalog-main__filter.open)::before {
     right: 0;
     top: 0;
     height: 100dvh;
-    z-index: 3;
+    z-index: 13;
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(3px);
     pointer-events: auto;
